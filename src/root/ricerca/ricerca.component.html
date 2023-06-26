@@ -1,7 +1,14 @@
 <div *ngIf='selezione'>
-  <h1>Ricerca per titolo e autore</h1>
-  <input id="ricerca" type="text" placeholder="Fai una ricerca" (keyup)="searchOnInput($event)" />
-  <div>{{output}} corrispondenze</div>
+  <ng-template *ngIf='defaultSelection; then bloccoIf else bloccoElse'></ng-template>
+  <ng-template #bloccoIf>
+    <h1>Ricerca per titolo e autore</h1>
+    <input id="ricerca" type="text" placeholder="Fai una ricerca" (keyup)="searchOnInput($event)" />
+    <div>{{output}} corrispondenze</div>
+  </ng-template>
+  <ng-template #bloccoElse>
+    <descrizione [autore]='autore' [titolo]='titolo'></descrizione>
 
+  </ng-template>
+  <br>
   <button (click)="clean()">Esci</button>
 </div>
