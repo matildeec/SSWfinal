@@ -17,14 +17,15 @@ export class InserimentoComponent {
 
   constructor(private router: Router, private archivio: ArchivioService) { }
 
-  Insert(autore: string, titolo: string): void {
-    //Passa i valori delle var autoreValue, titoloValue, posizioneValue
-    this.archivio.aggiungiLibro(autore, titolo);
-  }
-
   clean(){
     this.selezione = false;
     this.selezioneChanged.emit(this.selezione);
+  }
+
+  Insert(autore: string, titolo: string): void {
+    //Passa i valori delle var autoreValue, titoloValue, posizioneValue
+    this.archivio.aggiungiLibro(autore, titolo);
+    this.clean();
   }
 
 }

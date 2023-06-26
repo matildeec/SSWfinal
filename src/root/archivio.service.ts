@@ -26,7 +26,9 @@ export class ArchivioService {
 
   public updateInventario(x: string){
     JSON.parse(x).forEach((item: any) => { // parsing per avere l'array
-      const libro = new Volume(item.titolo, item.autore);
+      console.log(item)
+      const libro = new Volume(item.autore, item.titolo);
+      console.log(libro)
       this.Inventario.push(libro);
     });
   }

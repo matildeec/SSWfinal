@@ -9,7 +9,7 @@ import { Volume } from './volume';
 @Component({
   selector: 'root',
   standalone: true,
-  imports: [CommonModule, InserimentoComponent, RicercaComponent, RouterLink],
+  imports: [CommonModule, InserimentoComponent, RicercaComponent],
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css']
 })
@@ -17,7 +17,7 @@ export class RootComponent implements OnInit {
 
   constructor(private archivio: ArchivioService) { }
 
-  Archivio: Array<Volume> = []
+  Inventary: Array<Volume> = []
 
   ngOnInit() { 
     this.archivio.getData().subscribe({
@@ -25,7 +25,7 @@ export class RootComponent implements OnInit {
       error: (err: string) => console.error('something wrong occurred: ' + err),
       complete: () => {
         console.log('done');
-        this.Archivio = this.archivio.Inventario;
+        this.Inventary = this.archivio.Inventario;
       }
     });
    }

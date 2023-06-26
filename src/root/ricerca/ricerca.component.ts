@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArchivioService } from '../archivio.service';
 import { RootComponent } from '../root.component';
+import { Volume } from '../volume';
 
 @Component({
   selector: 'ricerca',
@@ -14,16 +15,17 @@ import { RootComponent } from '../root.component';
 export class RicercaComponent {
 
   @Input() selezione: boolean = true;
+  @Input() inventario: Array<Volume> = [];
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router, private archivio: ArchivioService) { }
 
   output: any = '0';
 
-  /*searchOnInput(event: any): void{
+  searchOnInput(event: any): void{
     let input = (event.target as HTMLInputElement).value;
     let regex = new RegExp(input, "gi");
-    const risultatiRicerca = this.Archivio.filter((libro) => ricerca(libro, regex));
+    const risultatiRicerca = this.inventario.filter((libro) => ricerca(libro, regex));
     
     function ricerca(libro: Volume, regex: RegExp): boolean {
       const stringaRicerca: string = libro.titolo.concat(" ", libro.autore).toLowerCase();
@@ -36,7 +38,7 @@ export class RicercaComponent {
     } else {
       this.output = risultatiRicerca.toString();
     }
-  }*/
+  }
 
   clean(){
     this.selezione = false;
