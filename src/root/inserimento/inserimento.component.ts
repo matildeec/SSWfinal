@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArchivioService } from '../archivio.service';
+import { RootComponent } from '../root.component';
 
 @Component({
   selector: 'inserimento',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './inserimento.component.html',
   styleUrls: ['./inserimento.component.css']
 })
 export class InserimentoComponent /*implements OnInit*/ {
-
+  @Input() selezione: boolean = true;
   constructor(private router: Router, private archivio: ArchivioService) { }
 
   navigaVersoPagina(page: string): void {

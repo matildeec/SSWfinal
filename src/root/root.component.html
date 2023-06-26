@@ -1,5 +1,10 @@
-<p>
-  root works!
-</p>
-  
-<inserimento></inserimento>
+<div *ngIf='clean'>
+  <h1>Gestione biblioteca</h1>
+  <button (click)="attiva('ricerca')">ricerca</button><br/>
+  <button (click)="attiva('inserimento')">inserimento</button>
+</div>
+
+<inserimento [selezione]='inserimentoSelezionato'></inserimento>
+
+<!--<button routerLink='ricerca'>ricerca</button><br/>
+  <button routerLink='inserimento'>inserimento</button>-->

@@ -1,12 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ArchivioService } from './archivio.service';
 import { InserimentoComponent } from './inserimento/inserimento.component';
 import { Volume } from './volume';
+import { LogicaVisualizzazione } from './logicaVisualizzazione';
 
 @Component({
   selector: 'root',
   standalone: true,
-  imports: [InserimentoComponent],
+  imports: [CommonModule, InserimentoComponent, RouterLink],
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css']
 })
@@ -27,4 +30,13 @@ export class RootComponent implements OnInit {
     });
    }
 
+  inserimentoSelezionato = true
+  clean = true;
+
+  attiva(value: string){
+    if(value==='inserimento'){
+      this.clean = false;
+      this.inserimentoSelezionato = true;
+    }
+  }
 }

@@ -1,8 +1,10 @@
-<h1>Inserimento di un nuovo volume</h1>
+<div *ngIf='selezione'>
+  <h1>Inserimento di un nuovo volume</h1>
 
-<label>Autore: </label> <input type="text" #autore /> <br>
-<label>Titolo: </label> <input type="text" #titolo /> <br>
-<label>Posizione: </label> <input type="text" #posizione /> <br>
+  <label>Autore: </label> <input type="text" #autore /> <br>
+  <label>Titolo: </label> <input type="text" #titolo /> <br>
+  <label>Posizione: </label> <input type="text" #posizione /> <br>
 
-<button (click)="Insert(autore.value, titolo.value)">Inserisci</button> <br>
-<button (click)="navigaVersoPagina('')">Esci</button>
+  <button (click)="Insert(autore.value, titolo.value)">Inserisci</button> <br>
+  <button (click)="navigaVersoPagina('')">Esci</button>
+</div>
