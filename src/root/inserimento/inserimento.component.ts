@@ -14,11 +14,8 @@ import { RootComponent } from '../root.component';
 export class InserimentoComponent /*implements OnInit*/ {
   @Input() selezione: boolean = true;
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor(private router: Router, private archivio: ArchivioService) { }
 
-  navigaVersoPagina(page: string): void {
-    this.router.navigate([page]);
-  }
+  constructor(private router: Router, private archivio: ArchivioService) { }
 
   Insert(autore: string, titolo: string): void {
     //Passa i valori delle var autoreValue, titoloValue, posizioneValue
