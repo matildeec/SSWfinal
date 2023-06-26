@@ -11,7 +11,7 @@ import { RootComponent } from '../root.component';
   templateUrl: './inserimento.component.html',
   styleUrls: ['./inserimento.component.css']
 })
-export class InserimentoComponent /*implements OnInit*/ {
+export class InserimentoComponent {
   @Input() selezione: boolean = true;
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 

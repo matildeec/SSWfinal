@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ArchivioService } from './archivio.service';
 import { InserimentoComponent } from './inserimento/inserimento.component';
+import { RicercaComponent } from './ricerca/ricerca.component';
 import { Volume } from './volume';
 
 @Component({
   selector: 'root',
   standalone: true,
-  imports: [CommonModule, InserimentoComponent, RouterLink],
+  imports: [CommonModule, InserimentoComponent, RicercaComponent, RouterLink],
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css']
 })
