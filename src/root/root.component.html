@@ -4,7 +4,4 @@
   <button (click)="attiva('inserimento')">inserimento</button>
 </div>
 
-<inserimento [selezione]='inserimentoSelezionato'></inserimento>
-
-<!--<button routerLink='ricerca'>ricerca</button><br/>
-  <button routerLink='inserimento'>inserimento</button>-->
+<inserimento [selezione]='inserimentoSelected' (selezioneChanged)="handleSelezioneChanged($event)"></inserimento>

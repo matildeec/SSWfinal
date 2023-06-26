@@ -4,7 +4,6 @@ import { RouterLink } from '@angular/router';
 import { ArchivioService } from './archivio.service';
 import { InserimentoComponent } from './inserimento/inserimento.component';
 import { Volume } from './volume';
-import { LogicaVisualizzazione } from './logicaVisualizzazione';
 
 @Component({
   selector: 'root',
@@ -30,13 +29,25 @@ export class RootComponent implements OnInit {
     });
    }
 
-  inserimentoSelezionato = true
-  clean = true;
+  inserimentoSelected: boolean = false;
+  ricercaSelected: boolean = false;
+  clean: boolean = true;
 
   attiva(value: string){
+    this.clean = false;
     if(value==='inserimento'){
-      this.clean = false;
-      this.inserimentoSelezionato = true;
+      this.inserimentoSelected = true;
+      this.ricercaSelected = false;
     }
+    if(value==='ricerca'){
+      this.ricercaSelected = true;
+      this.inserimentoSelected = false;
+    }
+  }
+
+  handleSelezioneChanged(newSelezione: boolean): void {
+    this.clean = true;
+    this.ricercaSelected = false;
+    this.inserimentoSelected = false;
   }
 }
