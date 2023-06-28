@@ -3,10 +3,16 @@
 <div>Autore: {{autore}}</div>
 <div>Titolo: {{titolo}}</div>
 
-<h3>Prestito</h3>
-<label>Nominativo: </label> <input type="text" #nominativo (keyup.enter)="Presta(nominativo.value)"/> <br>
+<ng-template *ngIf="nominativo === ''; then bloccoIf else bloccoElse"></ng-template>
+<ng-template #bloccoIf>
+  <!-- Contenuto del template da visualizzare se il nominativo è una stringa vuota -->
+  <h3>Prestito</h3>
+  <label>Nominativo: </label> <input type="text" #nome (keyup.enter)="Presta(nome.value)"/> <br>
+  <hr>
+  <button (click)='Remove()'>Rimuovi</button>
+</ng-template>
 
-<hr>
-<button (click)='Remove()'>Rimuovi</button>
-
-<button>Restituzione</button>
+<ng-template #bloccoElse>
+  <div>Intestatario del prestito: {{nominativo}}</div>
+  <button (click)='Restituisci()'>Restituzione</button>
+</ng-template>

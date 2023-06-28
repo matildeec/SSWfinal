@@ -24,6 +24,7 @@ export class RicercaComponent {
   autore: string = '';
   titolo: string = '';
   posizione: string = '';
+  nominativo: string = '';
   indiceVolume: any = null;
 
   constructor(private router: Router, private archivio: ArchivioService) { }
@@ -50,6 +51,7 @@ export class RicercaComponent {
       this.autore = risultatiRicerca[0].autore;
       this.titolo = risultatiRicerca[0].titolo;
       this.posizione = risultatiRicerca[0].posizione;
+      this.nominativo = risultatiRicerca[0].nominativo;
     } else {
       this.output = risultatiRicerca.length;
     }
