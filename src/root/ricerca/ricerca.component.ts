@@ -17,7 +17,7 @@ export class RicercaComponent {
   @Input() inventario: Array<Volume> = [];
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  defaultSelection: boolean = true;
+  inputSelected: boolean = true;
   output: any = '0';
   autore: string = '';
   titolo: string = '';
@@ -43,7 +43,7 @@ export class RicercaComponent {
       const volumeTrovato = risultatiRicerca[0];
       this.indiceVolume = this.inventario.indexOf(volumeTrovato);
 
-      this.defaultSelection = false;
+      this.inputSelected = false;
       this.autore = risultatiRicerca[0].autore;
       this.titolo = risultatiRicerca[0].titolo;
       this.posizione = risultatiRicerca[0].posizione;
@@ -55,7 +55,7 @@ export class RicercaComponent {
 
   Clean(){
     this.selezione = false;
-    this.defaultSelection = true;
+    this.inputSelected = true;
     this.output = '0';
     this.selezioneChanged.emit(this.selezione);
   }
