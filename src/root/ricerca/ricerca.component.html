@@ -9,7 +9,15 @@
   </ng-template>
 
   <ng-template #bloccoElse>
-    <descrizione [autore]='autore' [titolo]='titolo' [posizione]='posizione' [nominativo]='nominativo' [indiceVolume]='indiceVolume'></descrizione>
+    <descrizione 
+    (selezioneChanged)='handleSelezioneChanged($event)'
+    [autore]='autore' 
+    [titolo]='titolo' 
+    [posizione]='posizione' 
+    [nominativo]='nominativo' 
+    [indiceVolume]='indiceVolume' 
+    [selezione]='selezione'> 
+  </descrizione>
   </ng-template>
 
   <br>

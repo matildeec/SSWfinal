@@ -4,5 +4,14 @@
   <button (click)="attiva('inserimento')">inserimento</button>
 </div>
 
-<inserimento [selezione]='inserimentoSelected' (selezioneChanged)="handleSelezioneChanged($event)"></inserimento>
-<ricerca [selezione]='ricercaSelected' (selezioneChanged)="handleSelezioneChanged($event)" [inventario]='Inventary'></ricerca>
+<inserimento 
+[selezione]='inserimentoSelected' 
+(selezioneChanged)="handleSelezioneChanged($event)">
+</inserimento>
+
+<ricerca 
+[selezione]='ricercaSelected'
+[pulito]='clean' 
+(selezioneChanged)="handleSelezioneChanged($event)" 
+[inventario]='Inventary'>
+</ricerca>

@@ -16,6 +16,7 @@ import { DescrizioneComponent } from './descrizione/descrizione.component';
 export class RicercaComponent {
 
   @Input() selezione: boolean = true;
+  @Input() pulito: boolean = false;
   @Input() inventario: Array<Volume> = [];
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -62,6 +63,11 @@ export class RicercaComponent {
     this.defaultSelection = true;
     this.output = '0';
     this.selezioneChanged.emit(this.selezione);
+  }
+
+  handleSelezioneChanged(newSelezione: boolean): void {
+    this.pulito = true;
+    this.clean();
   }
 }
     
