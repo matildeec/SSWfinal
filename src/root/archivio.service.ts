@@ -24,14 +24,14 @@ export class ArchivioService {
     );
   }
 
-  public updateInventario(x: string){
+  public updateInventario(x: string){ //costruisce l'array dalla stringa JSON
     JSON.parse(x).forEach((item: any) => { // parsing per avere l'array
       const libro = new Volume(item.autore, item.titolo);
       this.Inventario.push(libro);
     });
   }
 
-  public sendData(archivio: Array<Volume>) { //invia al database esterno
+  public sendData(archivio: Array<Volume>) { //invia al database esterno l'array dell'inventario
     const obs = ajax({
       method: 'POST',
       url: this.base + '/set?key=' + this.key,
@@ -48,17 +48,26 @@ export class ArchivioService {
     });
   }
 
-  public aggiungiLibro(autore: string, titolo: string) { //cattura input e aggiunge all'array esistente + richiama setValue()
+  public aggiungiLibro(autore: string, titolo: string) { //cattura input e aggiunge all'array esistente + richiama sendData()
     let libro: Volume = new Volume(autore, titolo);
     this.Inventario.push(libro);
     this.sendData(this.Inventario);
   }
 
-  public rimuoviLibro(autore: string, titolo: string) {
+/*  public rimuoviLibro(autore: string, titolo: string) {
     this.Inventario = this.Inventario.filter(
       item => !(item.autore === autore && item.titolo === titolo)
       );
     console.log(this.Inventario);
     this.sendData(this.Inventario);
+  }*/
+
+  public rimuoviLibro(autore: string, titolo: string) {
+    const index = this.Inventario.findIndex(item => item.autore === autore && item.titolo === titolo);
+    if (index !== -1) {
+      this.Inventario.splice(index, 1);
+      console.log(this.Inventario);
+      this.sendData(this.Inventario);
+    }
   }
 }
