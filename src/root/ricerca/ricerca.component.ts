@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArchivioService } from '../archivio.service';
-import { RootComponent } from '../root.component';
 import { Volume } from '../volume';
 import { DescrizioneComponent } from './descrizione/descrizione.component';
 
@@ -28,7 +26,7 @@ export class RicercaComponent {
   nominativo: string = '';
   indiceVolume: any = null;
 
-  constructor(private router: Router, private archivio: ArchivioService) { }
+  constructor(private archivio: ArchivioService) { }
 
   searchOnInput(event: any): void{
     let input = (event.target as HTMLInputElement).value;
@@ -39,8 +37,6 @@ export class RicercaComponent {
       const stringaRicerca: string = libro.titolo.concat(" ", libro.autore).toLowerCase();
       return regex.test(stringaRicerca);
     }    
-
-    console.log(risultatiRicerca);
     
     if (input === '') {
       this.output = "0";
@@ -65,7 +61,7 @@ export class RicercaComponent {
     this.selezioneChanged.emit(this.selezione);
   }
 
-  handleSelezioneChanged(newSelezione: boolean): void {
+  handleSelezioneChanged(): void {
     this.pulito = true;
     this.clean();
   }

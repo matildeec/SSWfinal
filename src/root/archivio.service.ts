@@ -10,10 +10,11 @@ export class ArchivioService {
   key: string = '0b6b0802'; 
   base: string = 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint';
   
-  constructor() {}
-  
   Inventario: Array<Volume> = [];
 
+
+  constructor() {}
+  
   public getData(): Observable<string> {
     return ajax({ //questo è {l'oggetto} richiesto dal metodo ajax()
       method: 'GET',
@@ -53,19 +54,10 @@ export class ArchivioService {
     this.sendData(this.Inventario);
   }
 
-/*  public rimuoviLibro(autore: string, titolo: string) {
-    this.Inventario = this.Inventario.filter(
-      item => !(item.autore === autore && item.titolo === titolo)
-      );
-    console.log(this.Inventario);
-    this.sendData(this.Inventario);
-  }*/
-
   public rimuoviLibro(autore: string, titolo: string) {
     const index = this.Inventario.findIndex(item => item.autore === autore && item.titolo === titolo);
     if (index !== -1) {
       this.Inventario.splice(index, 1);
-      console.log(this.Inventario);
       this.sendData(this.Inventario);
     }
   }

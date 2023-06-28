@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArchivioService } from '../../archivio.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ArchivioService } from '../../archivio.service';
   styleUrls: ['./descrizione.component.css'],
   imports: [CommonModule]
 })
-export class DescrizioneComponent implements OnInit {
+export class DescrizioneComponent {
   @Input() autore: string = '';
   @Input() titolo: string = '';
   @Input() posizione: string = '';
@@ -20,9 +20,6 @@ export class DescrizioneComponent implements OnInit {
   @Input() defaultSelection: boolean = true;
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private archivio: ArchivioService) { }
-
-  ngOnInit() {
-  }
 
   clean(){
     this.selezione = false;

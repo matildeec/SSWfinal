@@ -13,10 +13,13 @@ import { Volume } from './volume';
   styleUrls: ['./root.component.css']
 })
 export class RootComponent implements OnInit {
+  inserimentoSelected: boolean = false;
+  ricercaSelected: boolean = false;
+  clean: boolean = true;
+
+  Inventario: Array<Volume> = []
 
   constructor(private archivio: ArchivioService) { }
-
-  Inventary: Array<Volume> = []
 
   ngOnInit() { 
     this.archivio.getData().subscribe({
@@ -24,14 +27,10 @@ export class RootComponent implements OnInit {
       error: (err: string) => console.error('something wrong occurred: ' + err),
       complete: () => {
         console.log('done');
-        this.Inventary = this.archivio.Inventario;
+        this.Inventario = this.archivio.Inventario;
       }
     });
    }
-
-  inserimentoSelected: boolean = false;
-  ricercaSelected: boolean = false;
-  clean: boolean = true;
 
   attiva(value: string){
     this.clean = false;
@@ -45,7 +44,7 @@ export class RootComponent implements OnInit {
     }
   }
 
-  handleSelezioneChanged(newSelezione: boolean): void {
+  handleSelezioneChanged(): void {
     this.clean = true;
     this.ricercaSelected = false;
     this.inserimentoSelected = false;

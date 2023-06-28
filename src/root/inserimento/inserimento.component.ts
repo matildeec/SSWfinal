@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArchivioService } from '../archivio.service';
 
 @Component({
@@ -16,14 +15,14 @@ export class InserimentoComponent {
 
   notifica: string = '';
 
-  constructor(private router: Router, private archivio: ArchivioService) { }
+  constructor(private archivio: ArchivioService) { }
 
   clean(){
     this.selezione = false;
     this.selezioneChanged.emit(this.selezione);
   }
 
-  Insert(autore: string, titolo: string, posizione: string): void {
+  Inserisci(autore: string, titolo: string, posizione: string): void {
     //Passa i valori delle var autore, titolo, posizione
 
     if (this.archivio.Inventario.some(item => item.posizione === posizione)) { // Verifica se la posizione è già presente nell'inventario
