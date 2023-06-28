@@ -17,20 +17,18 @@ export class InserimentoComponent {
 
   constructor(private archivio: ArchivioService) { }
 
-  clean(){
+  Clean(){
     this.selezione = false;
     this.selezioneChanged.emit(this.selezione);
   }
 
   Inserisci(autore: string, titolo: string, posizione: string): void {
-    //Passa i valori delle var autore, titolo, posizione
-
     if (this.archivio.Inventario.some(item => item.posizione === posizione)) { // Verifica se la posizione è già presente nell'inventario
       this.notifica = 'Posizione già occupata';
       return;
     }
     this.archivio.aggiungiLibro(autore, titolo, posizione, '');
-    this.clean();
+    this.Clean();
   }
 
 }

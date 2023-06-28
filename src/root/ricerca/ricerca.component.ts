@@ -12,9 +12,8 @@ import { DescrizioneComponent } from './descrizione/descrizione.component';
   imports: [CommonModule, DescrizioneComponent]
 })
 export class RicercaComponent {
-
   @Input() selezione: boolean = true;
-  @Input() pulito: boolean = false;
+  @Input() clean: boolean = false;
   @Input() inventario: Array<Volume> = [];
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -54,7 +53,7 @@ export class RicercaComponent {
     }
   }
 
-  clean(){
+  Clean(){
     this.selezione = false;
     this.defaultSelection = true;
     this.output = '0';
@@ -62,8 +61,8 @@ export class RicercaComponent {
   }
 
   handleSelezioneChanged(): void {
-    this.pulito = true;
-    this.clean();
+    this.clean = true;
+    this.Clean();
   }
 }
     

@@ -12,7 +12,6 @@ export class ArchivioService {
   
   Inventario: Array<Volume> = [];
 
-
   constructor() {}
   
   public getData(): Observable<string> {
