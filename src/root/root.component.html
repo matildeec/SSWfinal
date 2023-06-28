@@ -1,17 +1,17 @@
 <div *ngIf='clean'>
   <h1>Gestione biblioteca</h1>
-  <button (click)="attiva('ricerca')">ricerca</button><br/>
-  <button (click)="attiva('inserimento')">inserimento</button>
+  <button (click)="Attiva('ricerca')">ricerca</button><br/>
+  <button (click)="Attiva('inserimento')">inserimento</button>
 </div>
 
 <inserimento 
 [selezione]='inserimentoSelected' 
-(selezioneChanged)="handleSelezioneChanged()">
+(selezioneChanged)="HandleSelezioneChanged()">
 </inserimento>
 
 <ricerca 
 [selezione]='ricercaSelected'
 [clean]='clean' 
-(selezioneChanged)="handleSelezioneChanged()" 
+(selezioneChanged)="HandleSelezioneChanged()" 
 [inventario]='Inventario'>
 </ricerca>

@@ -19,15 +19,13 @@ export class RicercaComponent {
 
   inputSelected: boolean = true;
   output: any = '0';
-  autore: string = '';
-  titolo: string = '';
-  posizione: string = '';
-  nominativo: string = '';
   indiceVolume: any = null;
+
+  volumeTrovato: Volume = new Volume('', '', '', '');
 
   constructor(private archivio: ArchivioService) { }
 
-  searchOnInput(event: any): void{
+  SearchOnInput(event: any): void{
     let input = (event.target as HTMLInputElement).value;
     let regex = new RegExp(input, "gi");
     const risultatiRicerca = this.inventario.filter((libro) => ricerca(libro, regex));
@@ -40,14 +38,9 @@ export class RicercaComponent {
     if (input === '') {
       this.output = "0";
     } else if (risultatiRicerca.length===1) {
-      const volumeTrovato = risultatiRicerca[0];
-      this.indiceVolume = this.inventario.indexOf(volumeTrovato);
-
+      this.volumeTrovato = risultatiRicerca[0];
+      this.indiceVolume = this.inventario.indexOf(this.volumeTrovato);
       this.inputSelected = false;
-      this.autore = risultatiRicerca[0].autore;
-      this.titolo = risultatiRicerca[0].titolo;
-      this.posizione = risultatiRicerca[0].posizione;
-      this.nominativo = risultatiRicerca[0].nominativo;
     } else {
       this.output = risultatiRicerca.length;
     }
@@ -60,7 +53,7 @@ export class RicercaComponent {
     this.selezioneChanged.emit(this.selezione);
   }
 
-  handleSelezioneChanged(): void {
+  HandleSelezioneChanged(): void {
     this.clean = true;
     this.Clean();
   }

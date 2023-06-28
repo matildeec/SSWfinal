@@ -32,7 +32,7 @@ export class RootComponent implements OnInit {
     });
    }
 
-  attiva(value: string){
+  Attiva(value: string){
     this.clean = false;
     if(value==='inserimento'){
       this.inserimentoSelected = true;
@@ -44,7 +44,7 @@ export class RootComponent implements OnInit {
     }
   }
 
-  handleSelezioneChanged(): void {
+  HandleSelezioneChanged(): void {
     this.clean = true;
     this.ricercaSelected = false;
     this.inserimentoSelected = false;
