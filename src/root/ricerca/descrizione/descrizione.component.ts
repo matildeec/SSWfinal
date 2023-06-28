@@ -39,12 +39,12 @@ export class DescrizioneComponent implements OnInit {
     this.archivio.Inventario[this.indiceVolume].nominativo = nome;
     this.archivio.sendData(this.archivio.Inventario);
     this.clean();
-    console.log(this.selezione);
   }
 
   Restituisci(){
     this.archivio.Inventario[this.indiceVolume].nominativo = '';
     this.archivio.sendData(this.archivio.Inventario);
+    this.clean();
   }
 
 }
