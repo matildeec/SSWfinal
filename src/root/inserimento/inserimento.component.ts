@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArchivioService } from '../archivio.service';
-import { RootComponent } from '../root.component';
 
 @Component({
   selector: 'inserimento',
@@ -23,7 +22,7 @@ export class InserimentoComponent {
   }
 
   Insert(autore: string, titolo: string): void {
-    //Passa i valori delle var autoreValue, titoloValue, posizioneValue
+    //Passa i valori delle var autore, titolo, posizione
     this.archivio.aggiungiLibro(autore, titolo);
     this.clean();
   }
