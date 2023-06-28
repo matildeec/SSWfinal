@@ -24,6 +24,7 @@ export class RicercaComponent {
   autore: string = '';
   titolo: string = '';
   posizione: string = '';
+  indiceVolume: any = null;
 
   constructor(private router: Router, private archivio: ArchivioService) { }
 
@@ -42,6 +43,9 @@ export class RicercaComponent {
     if (input === '') {
       this.output = "0";
     } else if (risultatiRicerca.length===1) {
+      const volumeTrovato = risultatiRicerca[0];
+      this.indiceVolume = this.inventario.indexOf(volumeTrovato);
+
       this.defaultSelection = false;
       this.autore = risultatiRicerca[0].autore;
       this.titolo = risultatiRicerca[0].titolo;

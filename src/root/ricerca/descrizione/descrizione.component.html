@@ -4,7 +4,7 @@
 <div>Titolo: {{titolo}}</div>
 
 <h3>Prestito</h3>
-<label>Nominativo: </label> <input type="text" #nominativo (enter)="Presta(nominativo.value)"/> <br>
+<label>Nominativo: </label> <input type="text" #nominativo (keyup.enter)="Presta(nominativo.value)"/> <br>
 
 <hr>
 <button (click)='Remove()'>Rimuovi</button>

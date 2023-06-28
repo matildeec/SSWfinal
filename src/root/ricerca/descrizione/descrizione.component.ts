@@ -11,6 +11,7 @@ export class DescrizioneComponent implements OnInit {
   @Input() autore: string = '';
   @Input() titolo: string = '';
   @Input() posizione: string = '';
+  @Input() indiceVolume: any = null;
   constructor(private archivio: ArchivioService) { }
 
   ngOnInit() {
@@ -22,9 +23,8 @@ export class DescrizioneComponent implements OnInit {
   }
 
   Presta(nominativo: string): void {
-    //Passa i valori delle var autore, titolo, posizione
-    this.archivio.aggiungiLibro(this.autore, this.titolo, this.posizione, nominativo);
-
+    this.archivio.Inventario[this.indiceVolume].nominativo = nominativo;
+    this.archivio.sendData(this.archivio.Inventario);
   }
 
 }
