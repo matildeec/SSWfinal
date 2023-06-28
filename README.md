@@ -1,6 +1,6 @@
-# SSWfinalProject
+# SSWfinalVersion
 
-Versione Moduleless
+Versione finale Moduleless
 
 L'attività di progetto consiste nel realizzare una applicazione per la gestione dei documenti conservati in una biblioteca pubblica. Le funzionalità comprendono:
 * acquisizione di un nuovo documento
