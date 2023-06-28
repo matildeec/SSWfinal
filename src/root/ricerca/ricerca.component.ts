@@ -23,6 +23,7 @@ export class RicercaComponent {
   output: any = '0';
   autore: string = '';
   titolo: string = '';
+  posizione: string = '';
 
   constructor(private router: Router, private archivio: ArchivioService) { }
 
@@ -44,6 +45,7 @@ export class RicercaComponent {
       this.defaultSelection = false;
       this.autore = risultatiRicerca[0].autore;
       this.titolo = risultatiRicerca[0].titolo;
+      this.posizione = risultatiRicerca[0].posizione;
     } else {
       this.output = risultatiRicerca.length;
     }

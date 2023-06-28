@@ -1,9 +1,10 @@
 <h2>Descrizione del documento</h2>
+<div>{{posizione}}</div>
 <div>Autore: {{autore}}</div>
 <div>Titolo: {{titolo}}</div>
 
 <h3>Prestito</h3>
-<label>Nominativo: </label> <input type="text" #nominativo /> <br>
+<label>Nominativo: </label> <input type="text" #nominativo (enter)="Presta(nominativo.value)"/> <br>
 
 <hr>
 <button (click)='Remove()'>Rimuovi</button>

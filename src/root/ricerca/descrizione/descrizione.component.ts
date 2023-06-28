@@ -10,6 +10,7 @@ import { ArchivioService } from '../../archivio.service';
 export class DescrizioneComponent implements OnInit {
   @Input() autore: string = '';
   @Input() titolo: string = '';
+  @Input() posizione: string = '';
   constructor(private archivio: ArchivioService) { }
 
   ngOnInit() {
@@ -17,7 +18,13 @@ export class DescrizioneComponent implements OnInit {
 
   Remove(){
     this.archivio.rimuoviLibro(this.autore, this.titolo);
-    console.log(this.autore, this.titolo);
+  
+  }
+
+  Presta(nominativo: string): void {
+    //Passa i valori delle var autore, titolo, posizione
+    this.archivio.aggiungiLibro(this.autore, this.titolo, this.posizione, nominativo);
+
   }
 
 }

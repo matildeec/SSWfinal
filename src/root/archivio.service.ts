@@ -26,7 +26,7 @@ export class ArchivioService {
 
   public updateInventario(x: string){ //costruisce l'array dalla stringa JSON
     JSON.parse(x).forEach((item: any) => { // parsing per avere l'array
-      const libro = new Volume(item.autore, item.titolo);
+      const libro = new Volume(item.autore, item.titolo, item.posizione, item.nominativo);
       this.Inventario.push(libro);
     });
   }
@@ -42,14 +42,13 @@ export class ArchivioService {
       next: (res: AjaxResponse<any>) => {},
       error: (err: AjaxError) => console.error(err.response),
       complete: () => {
-        console.log(JSON.stringify(archivio));
         console.log('Salvato')
       }
     });
   }
 
-  public aggiungiLibro(autore: string, titolo: string) { //cattura input e aggiunge all'array esistente + richiama sendData()
-    let libro: Volume = new Volume(autore, titolo);
+  public aggiungiLibro(autore: string, titolo: string, posizione: string, nominativo: string) { //cattura input e aggiunge all'array esistente + richiama sendData()
+    let libro: Volume = new Volume(autore, titolo, posizione, nominativo);
     this.Inventario.push(libro);
     this.sendData(this.Inventario);
   }

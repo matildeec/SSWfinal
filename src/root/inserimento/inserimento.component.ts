@@ -14,6 +14,8 @@ export class InserimentoComponent {
   @Input() selezione: boolean = true;
   @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  notifica: string = '';
+
   constructor(private router: Router, private archivio: ArchivioService) { }
 
   clean(){
@@ -21,9 +23,14 @@ export class InserimentoComponent {
     this.selezioneChanged.emit(this.selezione);
   }
 
-  Insert(autore: string, titolo: string): void {
+  Insert(autore: string, titolo: string, posizione: string): void {
     //Passa i valori delle var autore, titolo, posizione
-    this.archivio.aggiungiLibro(autore, titolo);
+
+    if (this.archivio.Inventario.some(item => item.posizione === posizione)) { // Verifica se la posizione è già presente nell'inventario
+      this.notifica = 'Posizione già occupata';
+      return;
+    }
+    this.archivio.aggiungiLibro(autore, titolo, posizione, '');
     this.clean();
   }
 
