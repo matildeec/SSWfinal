@@ -1,4 +1,5 @@
-# SSWfinalVersion
+# Progetto finale di Sviluppo di Servizi Web
+*Web Services Development Project*, University of Pisa, academic year 2022/2023
 
 Versione finale Moduleless
 
