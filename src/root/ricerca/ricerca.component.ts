@@ -36,7 +36,6 @@ export class RicercaComponent {
       this.indiceVolume = this.archivio.inventario.indexOf(this.volumeTrovato);
       this.bloccoRicerca = false;
     } else {
-      console.log(risultatiRicerca)
       this.output = risultatiRicerca.length;
     }
   }
