@@ -53,8 +53,8 @@ export class ArchivioService {
     this.sendData(this.Inventario);
   }
 
-  public rimuoviLibro(autore: string, titolo: string) {
-    const index = this.Inventario.findIndex(item => item.autore === autore && item.titolo === titolo);
+  public rimuoviLibro(autore: string, titolo: string, posizione: string) {
+    const index = this.Inventario.findIndex(item => item.autore === autore && item.titolo === titolo && item.posizione);
     if (index !== -1) {
       this.Inventario.splice(index, 1);
       this.sendData(this.Inventario);

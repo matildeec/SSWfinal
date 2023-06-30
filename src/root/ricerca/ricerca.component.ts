@@ -17,7 +17,7 @@ export class RicercaComponent {
   @Input() inventario: Array<Volume> = [];
   @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  inputSelected: boolean = true;
+  bloccoRicerca: boolean = true;
   output: any = 0;
   indiceVolume: any = null;
 
@@ -33,14 +33,14 @@ export class RicercaComponent {
     function ricerca(libro: Volume, regex: RegExp): boolean {
       const stringaRicerca: string = libro.titolo.concat(" ", libro.autore).toLowerCase();
       return regex.test(stringaRicerca);
-    }    
+    }
     
     if (input === '') {
       this.output = 0;
     } else if (risultatiRicerca.length===1) {
       this.volumeTrovato = risultatiRicerca[0];
       this.indiceVolume = this.inventario.indexOf(this.volumeTrovato);
-      this.inputSelected = false;
+      this.bloccoRicerca = false;
     } else {
       this.output = risultatiRicerca.length;
     }
@@ -48,7 +48,7 @@ export class RicercaComponent {
 
   Clean(): void {
     this.selezione = false;
-    this.inputSelected = true;
+    this.bloccoRicerca = true;
     this.output = 0;
     this.cambioSelezione.emit(this.selezione);
   }

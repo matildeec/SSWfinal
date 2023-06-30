@@ -27,7 +27,7 @@ export class DescrizioneComponent {
   }
 
   Rimuovi(): void {
-    this.archivio.rimuoviLibro(this.volumeTrovato.autore, this.volumeTrovato.titolo);
+    this.archivio.rimuoviLibro(this.volumeTrovato.autore, this.volumeTrovato.titolo, this.volumeTrovato.posizione);
     this.Clean();
   }
 

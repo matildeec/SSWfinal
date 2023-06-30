@@ -1,6 +1,6 @@
 <div *ngIf='selezione'>
   
-  <ng-template *ngIf='inputSelected; then bloccoIf else bloccoElse'></ng-template>
+  <ng-template *ngIf='bloccoRicerca; then bloccoIf else bloccoElse'></ng-template>
 
   <ng-template #bloccoIf>
     <h1>Ricerca per titolo e autore</h1>
