@@ -20,12 +20,12 @@ export class ArchivioService {
       url: this.base + '/get?key=' + this.key, 
       crossDomain: true
       }).pipe(
-        map((risposta: { response: any; }) => risposta.response) // Trasforma l'oggetto AjaxResponse in una stringa
+        map((risposta: { response: any; }) => risposta.response) //trasforma l'oggetto AjaxResponse in una stringa
     );
   }
 
   public updateInventario(x: string){ //costruisce l'array dalla stringa JSON
-    JSON.parse(x).forEach((item: any) => { // parsing per avere l'array
+    JSON.parse(x).forEach((item: any) => { //parsing per avere l'array
       const libro = new Volume(item.autore, item.titolo, item.posizione, item.nominativo);
       this.Inventario.push(libro);
     });

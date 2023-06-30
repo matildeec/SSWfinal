@@ -32,7 +32,7 @@ export class RootComponent implements OnInit {
     });
    }
 
-  Attiva(value: string) {
+  Attiva(value: string): void {
     this.clean = false;
     this.inserimentoSelected = value === 'inserimento';
     this.ricercaSelected = value === 'ricerca';

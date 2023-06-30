@@ -18,7 +18,7 @@ export class RicercaComponent {
   @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   inputSelected: boolean = true;
-  output: any = '0';
+  output: any = 0;
   indiceVolume: any = null;
 
   volumeTrovato: Volume = new Volume('', '', '', '');
@@ -36,7 +36,7 @@ export class RicercaComponent {
     }    
     
     if (input === '') {
-      this.output = "0";
+      this.output = 0;
     } else if (risultatiRicerca.length===1) {
       this.volumeTrovato = risultatiRicerca[0];
       this.indiceVolume = this.inventario.indexOf(this.volumeTrovato);
@@ -46,10 +46,10 @@ export class RicercaComponent {
     }
   }
 
-  Clean(){
+  Clean(): void {
     this.selezione = false;
     this.inputSelected = true;
-    this.output = '0';
+    this.output = 0;
     this.cambioSelezione.emit(this.selezione);
   }
 

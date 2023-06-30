@@ -10,15 +10,13 @@
 
   <ng-template #bloccoElse>
     <descrizione 
+    [selezione]='selezione'
     (cambioSelezione)='HandleCambioSelezione()'
-    
     [volumeTrovato]='volumeTrovato' 
-    
-    [indiceVolume]='indiceVolume' 
-    [selezione]='selezione'> 
+    [indiceVolume]='indiceVolume'> 
   </descrizione>
   </ng-template>
 
-  <br>
+  <hr>
   <button (click)="Clean()">Esci</button>
 </div>

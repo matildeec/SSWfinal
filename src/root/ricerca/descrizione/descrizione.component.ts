@@ -20,13 +20,13 @@ export class DescrizioneComponent {
   
   constructor(private archivio: ArchivioService) { }
 
-  Clean(){
+  Clean(): void {
     this.selezione = false;
     this.defaultSelection = true;
     this.cambioSelezione.emit(this.selezione);
   }
 
-  Rimuovi(){
+  Rimuovi(): void {
     this.archivio.rimuoviLibro(this.volumeTrovato.autore, this.volumeTrovato.titolo);
     this.Clean();
   }
@@ -37,7 +37,7 @@ export class DescrizioneComponent {
     this.Clean();
   }
 
-  Restituisci(){
+  Restituisci(): void {
     this.archivio.Inventario[this.indiceVolume].nominativo = '';
     this.archivio.sendData(this.archivio.Inventario);
     this.Clean();
