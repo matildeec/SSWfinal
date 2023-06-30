@@ -4,6 +4,7 @@
 <div><label>Titolo:</label>{{volumeTrovato.titolo}}</div>
 
 <ng-template *ngIf="volumeTrovato.nominativo === ''; then bloccoIf else bloccoElse"></ng-template>
+
 <ng-template #bloccoIf>
   <!-- Contenuto del template da visualizzare se il nominativo è una stringa vuota -->
   <h3>Prestito</h3>
@@ -13,6 +14,6 @@
 </ng-template>
 
 <ng-template #bloccoElse>
-  <div>Intestatario del prestito: {{volumeTrovato.nominativo}}</div>
+  <div><label>Intestatario del prestito:</label>{{volumeTrovato.nominativo}}</div>
   <button (click)='Restituisci()'>Restituzione</button>
 </ng-template>
