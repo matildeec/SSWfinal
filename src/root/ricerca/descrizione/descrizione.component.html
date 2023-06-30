@@ -7,7 +7,7 @@
 <ng-template #bloccoIf>
   <!-- Contenuto del template da visualizzare se il nominativo è una stringa vuota -->
   <h3>Prestito</h3>
-  <label>Nominativo: </label> <input type="text" #nome (keyup.enter)="Presta(nome.value)"/> <br>
+  <label>Nominativo: </label> <input type="text" placeholder="Inserisci il nominativo" #nome (keyup.enter)="Presta(nome.value)"/><br>
   <hr>
   <button (click)='Rimuovi()'>Rimuovi</button>
 </ng-template>

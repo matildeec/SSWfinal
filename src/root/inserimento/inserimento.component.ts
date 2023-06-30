@@ -11,7 +11,7 @@ import { ArchivioService } from '../archivio.service';
 })
 export class InserimentoComponent {
   @Input() selezione: boolean = true;
-  @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   notifica: string = '';
 
@@ -19,7 +19,7 @@ export class InserimentoComponent {
 
   Clean(){
     this.selezione = false;
-    this.selezioneChanged.emit(this.selezione);
+    this.cambioSelezione.emit(this.selezione);
   }
 
   Inserisci(autore: string, titolo: string, posizione: string): void {

@@ -1,8 +1,8 @@
-export class Volume { //SHORTCUT COSTRUTTORE
+export class Volume {
   constructor(
     public autore: string,
     public titolo: string,
-    public posizione: string, //IDENTIFICATORE UNICO AGGIUNGI CONTROLLO
+    public posizione: string,
     public nominativo: string
     ) {}
 }

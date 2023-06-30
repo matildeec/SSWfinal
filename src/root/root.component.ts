@@ -32,19 +32,13 @@ export class RootComponent implements OnInit {
     });
    }
 
-  Attiva(value: string){
+  Attiva(value: string) {
     this.clean = false;
-    if(value==='inserimento'){
-      this.inserimentoSelected = true;
-      this.ricercaSelected = false;
-    }
-    if(value==='ricerca'){
-      this.ricercaSelected = true;
-      this.inserimentoSelected = false;
-    }
+    this.inserimentoSelected = value === 'inserimento';
+    this.ricercaSelected = value === 'ricerca';
   }
 
-  HandleSelezioneChanged(): void {
+  HandleCambioSelezione(): void {
     this.clean = true;
     this.ricercaSelected = false;
     this.inserimentoSelected = false;

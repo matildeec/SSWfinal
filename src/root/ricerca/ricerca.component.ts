@@ -15,7 +15,7 @@ export class RicercaComponent {
   @Input() selezione: boolean = true;
   @Input() clean: boolean = false;
   @Input() inventario: Array<Volume> = [];
-  @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   inputSelected: boolean = true;
   output: any = '0';
@@ -50,10 +50,10 @@ export class RicercaComponent {
     this.selezione = false;
     this.inputSelected = true;
     this.output = '0';
-    this.selezioneChanged.emit(this.selezione);
+    this.cambioSelezione.emit(this.selezione);
   }
 
-  HandleSelezioneChanged(): void {
+  HandleCambioSelezione(): void {
     this.clean = true;
     this.Clean();
   }

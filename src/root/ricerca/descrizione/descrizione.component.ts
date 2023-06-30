@@ -16,19 +16,19 @@ export class DescrizioneComponent {
 
   @Input() selezione: boolean = true;
   @Input() defaultSelection: boolean = true;
-  @Output() selezioneChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
   
   constructor(private archivio: ArchivioService) { }
 
   Clean(){
     this.selezione = false;
     this.defaultSelection = true;
-    this.selezioneChanged.emit(this.selezione);
+    this.cambioSelezione.emit(this.selezione);
   }
 
   Rimuovi(){
     this.archivio.rimuoviLibro(this.volumeTrovato.autore, this.volumeTrovato.titolo);
-  
+    this.Clean();
   }
 
   Presta(nome: string): void {
