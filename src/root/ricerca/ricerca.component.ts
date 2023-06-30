@@ -13,10 +13,9 @@ import { DescrizioneComponent } from './descrizione/descrizione.component';
   imports: [CommonModule, DescrizioneComponent]
 })
 export class RicercaComponent {
-  @Input() selezione: boolean = true;
-  @Input() clean: boolean = false;
+  @Input() view: string = '';
   @Input() archivio: Archivio = new Archivio([]);
-  @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() cambioView: EventEmitter<string> = new EventEmitter<string>();
 
   bloccoRicerca: boolean = true;
   output: any = 0;
@@ -44,14 +43,13 @@ export class RicercaComponent {
   }
 
   Clean(): void {
-    this.selezione = false;
+    this.view = 'homepage';
     this.bloccoRicerca = true;
     this.output = 0;
-    this.cambioSelezione.emit(this.selezione);
+    this.cambioView.emit(this.view);
   }
 
-  HandleCambioSelezione(): void {
-    this.clean = true;
+  HandleCambioView(): void {
     this.Clean();
   }
 }

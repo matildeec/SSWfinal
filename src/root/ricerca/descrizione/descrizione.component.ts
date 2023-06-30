@@ -16,16 +16,16 @@ export class DescrizioneComponent {
   @Input() indiceVolume: any = null;
   @Input() volumeTrovato: Volume = new Volume('', '', '', '');
   @Input() archivio: Archivio = new Archivio([]);
-  @Input() selezione: boolean = true;
+  @Input() view: string = '';
   @Input() defaultSelection: boolean = true;
-  @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() cambioView: EventEmitter<string> = new EventEmitter<string>();
   
   constructor(private as: ArchivioService) { }
 
   Clean(): void {
-    this.selezione = false;
+    this.view = 'homepage';
     this.defaultSelection = true;
-    this.cambioSelezione.emit(this.selezione);
+    this.cambioView.emit(this.view);
   }
 
   InviaDati(): void {

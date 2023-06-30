@@ -1,18 +1,17 @@
-<div *ngIf='clean'>
+<div *ngIf='view==="homepage"'>
   <h1>Gestione biblioteca</h1>
-  <button (click)="Attiva('ricerca')">Ricerca</button><br/>
-  <button (click)="Attiva('inserimento')">Inserimento</button>
+  <button (click)="AttivaView('ricerca')">Ricerca</button><br/>
+  <button (click)="AttivaView('inserimento')">Inserimento</button>
 </div>
 
-<inserimento
-[archivio] = 'archivio' 
-[selezione]='inserimentoSelected' 
-(cambioSelezione)="HandleCambioSelezione()">
+<inserimento 
+[view]='view' 
+(cambioView)="HandleCambioView()"
+[archivio] = 'archivio'>
 </inserimento>
 
 <ricerca 
-[selezione]='ricercaSelected'
-[clean]='clean' 
-(cambioSelezione)="HandleCambioSelezione()" 
+[view]='view'
+(cambioView)="HandleCambioView()" 
 [archivio] = 'archivio'>
 </ricerca>

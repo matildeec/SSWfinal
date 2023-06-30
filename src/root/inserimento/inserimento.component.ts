@@ -12,9 +12,9 @@ import { AjaxError, AjaxResponse } from 'rxjs/ajax';
   styleUrls: ['./inserimento.component.css']
 })
 export class InserimentoComponent {
-  @Input() selezione: boolean = true;
+  @Input() view: string = '';
   @Input() archivio: Archivio = new Archivio([]);
-  @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() cambioView: EventEmitter<string> = new EventEmitter<string>();
 
   notifica: string = '';
 
@@ -22,8 +22,8 @@ export class InserimentoComponent {
 
   Clean(): void {
     this.notifica = '';
-    this.selezione = false;
-    this.cambioSelezione.emit(this.selezione);
+    this.view = 'homepage';
+    this.cambioView.emit(this.view);
   }
 
   Inserisci(autore: string, titolo: string, posizione: string): void {

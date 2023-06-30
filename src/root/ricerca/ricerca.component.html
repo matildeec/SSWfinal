@@ -1,4 +1,4 @@
-<div *ngIf='selezione'>
+<div *ngIf='view==="ricerca"'>
   
   <ng-template *ngIf='bloccoRicerca; then bloccoIf else bloccoElse'></ng-template>
 
@@ -11,8 +11,8 @@
   <ng-template #bloccoElse>
     <descrizione 
     [archivio]='archivio'
-    [selezione]='selezione'
-    (cambioSelezione)='HandleCambioSelezione()'
+    [view]='view'
+    (cambioview)='HandleCambioView()'
     [volumeTrovato]='volumeTrovato' 
     [indiceVolume]='indiceVolume'> 
   </descrizione>

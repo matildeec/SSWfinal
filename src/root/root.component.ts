@@ -13,11 +13,8 @@ import { RicercaComponent } from './ricerca/ricerca.component';
   styleUrls: ['./root.component.css']
 })
 export class RootComponent implements OnInit {
-  inserimentoSelected: boolean = false;
-  ricercaSelected: boolean = false;
-  clean: boolean = true;
-
-  archivio: Archivio = new Archivio([])
+  view: string = 'homepage';
+  archivio: Archivio = new Archivio([]);
 
   constructor(private as: ArchivioService) { }
 
@@ -32,15 +29,11 @@ export class RootComponent implements OnInit {
     });
    }
 
-  Attiva(value: string): void {
-    this.clean = false;
-    this.inserimentoSelected = value === 'inserimento';
-    this.ricercaSelected = value === 'ricerca';
+  AttivaView(value: string): void {
+    this.view = value;
   }
 
-  HandleCambioSelezione(): void {
-    this.clean = true;
-    this.ricercaSelected = false;
-    this.inserimentoSelected = false;
+  HandleCambioView(): void {
+    this.view = 'homepage';
   }
 }
