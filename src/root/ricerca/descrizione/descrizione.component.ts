@@ -34,6 +34,8 @@ export class DescrizioneComponent {
   Rimuovi(): void {
     this.archivio.rimuoviLibro(this.volumeTrovato.autore, this.volumeTrovato.titolo, this.volumeTrovato.posizione);
     this.InviaDati();
+    this.view = 'homepage';
+    this.cambioView.emit(this.view);
   }
 
   Presta(nome: string): void {
