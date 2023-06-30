@@ -31,7 +31,7 @@ export class RicercaComponent {
     const risultatiRicerca = this.inventario.filter((libro) => ricerca(libro, regex));
     
     function ricerca(libro: Volume, regex: RegExp): boolean {
-      const stringaRicerca: string = libro.titolo.concat(" ", libro.autore).toLowerCase();
+      const stringaRicerca: string = libro.titolo.concat(" ", libro.autore, " ", libro.posizione).toLowerCase();
       return regex.test(stringaRicerca);
     }
     
