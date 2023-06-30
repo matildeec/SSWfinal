@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AjaxError, AjaxResponse } from 'rxjs/ajax';
 import { ArchivioService } from '../archivio.service';
 import { Archivio } from '../archivio';
-import { AjaxError, AjaxResponse } from 'rxjs/ajax';
 
 @Component({
   selector: 'inserimento',

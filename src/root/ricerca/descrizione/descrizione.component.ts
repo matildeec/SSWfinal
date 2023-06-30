@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Volume } from '../../volume';
-import { ArchivioService } from '../../archivio.service';
-import { Archivio } from '../../archivio';
 import { AjaxError, AjaxResponse } from 'rxjs/ajax';
+import { ArchivioService } from '../../archivio.service';
+import { Volume } from '../../volume';
+import { Archivio } from '../../archivio';
 
 @Component({
   selector: 'descrizione',
@@ -17,14 +17,12 @@ export class DescrizioneComponent {
   @Input() volumeTrovato: Volume = new Volume('', '', '', '');
   @Input() archivio: Archivio = new Archivio([]);
   @Input() view: string = '';
-  @Input() defaultSelection: boolean = true;
   @Output() cambioView: EventEmitter<string> = new EventEmitter<string>();
   
   constructor(private as: ArchivioService) { }
 
   Clean(): void {
     this.view = 'homepage';
-    this.defaultSelection = true;
     this.cambioView.emit(this.view);
   }
 

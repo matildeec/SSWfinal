@@ -1,23 +1,20 @@
-<div *ngIf='view==="ricerca"'>
-  
-  <ng-template *ngIf='bloccoRicerca; then bloccoIf else bloccoElse'></ng-template>
+<ng-template *ngIf='bloccoRicerca; then bloccoIf else bloccoElse'></ng-template>
 
-  <ng-template #bloccoIf>
-    <h1>Ricerca per titolo e autore</h1>
-    <input id="ricerca" type="text" placeholder="Fai una ricerca" (keyup)="SearchOnInput($event)" />
-    <div class='output'>{{output}} corrispondenze</div>
-  </ng-template>
+<ng-template #bloccoIf>
+  <h1>Ricerca per titolo e autore</h1>
+  <input id="ricerca" type="text" placeholder="Fai una ricerca" (keyup)="SearchOnInput($event)" />
+  <div class='output'>{{output}} corrispondenze</div>
+</ng-template>
 
-  <ng-template #bloccoElse>
-    <descrizione 
-    [archivio]='archivio'
-    [view]='view'
-    (cambioview)='HandleCambioView()'
-    [volumeTrovato]='volumeTrovato' 
-    [indiceVolume]='indiceVolume'> 
-  </descrizione>
-  </ng-template>
+<ng-template #bloccoElse>
+  <descrizione 
+  [archivio]='archivio'
+  [view]='view'
+  (cambioview)='HandleCambioView()'
+  [volumeTrovato]='volumeTrovato' 
+  [indiceVolume]='indiceVolume'> 
+</descrizione>
+</ng-template>
 
-  <hr>
-  <button (click)="Clean()">Esci</button>
-</div>
+<hr>
+<button (click)="Clean()">Esci</button>

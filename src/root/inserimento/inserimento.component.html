@@ -1,13 +1,11 @@
-<div *ngIf='view==="inserimento"'>
-  <h1>Inserimento di un nuovo volume</h1>
-  <div class=form>
-    <label>Autore: </label> <input type="text" placeholder="es. Dante Alighieri" #autore /><br>
-    <label>Titolo: </label> <input type="text" placeholder="es. Divina Commedia" #titolo /><br>
-    <label>Posizione: </label> <input type="text" placeholder="es. S1P1" #posizione />
-    <div class='notifica'> {{notifica}}</div>
-  </div>
-
-  <button (click)="Inserisci(autore.value, titolo.value, posizione.value)">Inserisci</button> <br>
-  <hr>
-  <button (click)="Clean()">Esci</button>
+<h1>Inserimento di un nuovo volume</h1>
+<div class=form>
+  <label>Autore: </label> <input type="text" placeholder="es. Dante Alighieri" #autore /><br>
+  <label>Titolo: </label> <input type="text" placeholder="es. Divina Commedia" #titolo /><br>
+  <label>Posizione: </label> <input type="text" placeholder="es. S1P1" #posizione />
+  <div class='notifica'> {{notifica}}</div>
 </div>
+
+<button (click)="Inserisci(autore.value, titolo.value, posizione.value)">Inserisci</button>
+<hr>
+<button (click)="Clean()">Esci</button>

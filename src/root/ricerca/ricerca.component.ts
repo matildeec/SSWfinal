@@ -20,7 +20,6 @@ export class RicercaComponent {
   bloccoRicerca: boolean = true;
   output: any = 0;
   indiceVolume: any = null;
-
   volumeTrovato: Volume = new Volume('', '', '', '');
 
   constructor(private as: ArchivioService) { }

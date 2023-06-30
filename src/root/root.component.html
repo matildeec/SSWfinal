@@ -4,14 +4,14 @@
   <button (click)="AttivaView('inserimento')">Inserimento</button>
 </div>
 
-<inserimento 
+<inserimento *ngIf='view==="inserimento"'
 [view]='view' 
 (cambioView)="HandleCambioView()"
 [archivio] = 'archivio'>
 </inserimento>
 
-<ricerca 
+<ricerca *ngIf='view==="ricerca"'
 [view]='view'
 (cambioView)="HandleCambioView()" 
-[archivio] = 'archivio'>
+[archivio]='archivio'>
 </ricerca>
