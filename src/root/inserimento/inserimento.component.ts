@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArchivioService } from '../archivio.service';
 import { Archivio } from '../archivio';
-import { Volume } from '../volume';
+import { AjaxError, AjaxResponse } from 'rxjs/ajax';
 
 @Component({
   selector: 'inserimento',
@@ -32,13 +32,19 @@ export class InserimentoComponent {
       return;
     }
 
-    if (this.archivio.inventario.some(item => item.posizione === posizione.toUpperCase())) { //verifica se la posizione è già presente nell'inventario
+    if (this.archivio.inventario.some(item => item.posizione === posizione.toUpperCase())) {
       this.notifica = 'Posizione già occupata';
       return;
     }
 
     this.archivio.aggiungiLibro(autore, titolo, posizione.toUpperCase(), '');
-    this.as.sendData(JSON.stringify(this.archivio.inventario));
+    this.as.sendData(JSON.stringify(this.archivio.inventario)).subscribe({
+      next: (res: AjaxResponse<any>) => console.log(res.response),
+      error: (err: AjaxError) => console.error(err.response),
+      complete: () => {
+        console.log('Salvato')
+      }
+    });
     this.Clean();
   }
 

@@ -27,7 +27,7 @@ export class Archivio {
   }
 
   rimuoviLibro(autore: string, titolo: string, posizione: string) {
-    const index = this.inventario.findIndex(item => item.autore === autore && item.titolo === titolo && item.posizione);
+    const index = this.inventario.findIndex(item => item.autore === autore && item.titolo === titolo && item.posizione === posizione);
     if (index !== -1) {
       this.inventario.splice(index, 1);
     }

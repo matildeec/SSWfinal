@@ -23,10 +23,7 @@ export class RootComponent implements OnInit {
 
   ngOnInit() { 
     this.as.getData().subscribe({
-      next: (x: string) => {
-        console.log(x)
-        this.archivio.aggiornaInventario(x)
-      },
+      next: (x: string) => this.archivio.aggiornaInventario(x),
       error: (err: string) => console.error('something wrong occurred: ' + err),
       complete: () => {
         console.log('done');
