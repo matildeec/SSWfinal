@@ -19,12 +19,7 @@ export class DescrizioneComponent {
   @Input() view: string = '';
   @Output() cambioView: EventEmitter<string> = new EventEmitter<string>();
   
-  constructor(private as: ArchivioService) { }
-
-  Clean(): void {
-    this.view = 'homepage';
-    this.cambioView.emit(this.view);
-  }
+  constructor(private as: ArchivioService) {}
 
   InviaDati(): void {
     this.as.sendData(JSON.stringify(this.archivio.inventario)).subscribe({
@@ -34,7 +29,6 @@ export class DescrizioneComponent {
         console.log('Salvato')
       }
     });
-    this.Clean();
   }
 
   Rimuovi(): void {
