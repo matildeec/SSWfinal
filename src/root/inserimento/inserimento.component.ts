@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArchivioService } from '../archivio.service';
+import { Archivio } from '../archivio';
+import { Volume } from '../volume';
 
 @Component({
   selector: 'inserimento',
@@ -11,11 +13,12 @@ import { ArchivioService } from '../archivio.service';
 })
 export class InserimentoComponent {
   @Input() selezione: boolean = true;
+  @Input() archivio: Archivio = new Archivio([]);
   @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   notifica: string = '';
 
-  constructor(private archivio: ArchivioService) { }
+  constructor(private as: ArchivioService) { }
 
   Clean(): void {
     this.notifica = '';
@@ -29,12 +32,13 @@ export class InserimentoComponent {
       return;
     }
 
-    if (this.archivio.Inventario.some(item => item.posizione === posizione.toUpperCase())) { //verifica se la posizione è già presente nell'inventario
+    if (this.archivio.inventario.some(item => item.posizione === posizione.toUpperCase())) { //verifica se la posizione è già presente nell'inventario
       this.notifica = 'Posizione già occupata';
       return;
     }
-    
+
     this.archivio.aggiungiLibro(autore, titolo, posizione.toUpperCase(), '');
+    this.as.sendData(JSON.stringify(this.archivio.inventario));
     this.Clean();
   }
 

@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ArchivioService } from './archivio.service';
 import { InserimentoComponent } from './inserimento/inserimento.component';
+import { Archivio } from './archivio';
 import { RicercaComponent } from './ricerca/ricerca.component';
-import { Volume } from './volume';
 
 @Component({
   selector: 'root',
@@ -17,17 +17,20 @@ export class RootComponent implements OnInit {
   ricercaSelected: boolean = false;
   clean: boolean = true;
 
-  Inventario: Array<Volume> = []
+  archivio: Archivio = new Archivio([])
 
-  constructor(private archivio: ArchivioService) { }
+  constructor(private as: ArchivioService) { }
 
   ngOnInit() { 
-    this.archivio.getData().subscribe({
-      next: (x: string) => this.archivio.updateInventario(x),
+    this.as.getData().subscribe({
+      next: (x: string) => {
+        console.log(x)
+        this.archivio.aggiornaInventario(x)
+      },
       error: (err: string) => console.error('something wrong occurred: ' + err),
       complete: () => {
         console.log('done');
-        this.Inventario = this.archivio.Inventario;
+        console.log(this.archivio);
       }
     });
    }

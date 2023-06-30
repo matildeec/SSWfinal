@@ -10,7 +10,7 @@ export class ArchivioService {
   key: string = '0b6b0802'; 
   base: string = 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint';
   
-  Inventario: Array<Volume> = [];
+  /*Inventario: Array<Volume> = [];*/
 
   constructor() {}
   
@@ -23,20 +23,20 @@ export class ArchivioService {
         map((risposta: { response: any; }) => risposta.response) //trasforma l'oggetto AjaxResponse in una stringa
     );
   }
-
+/*
   public updateInventario(x: string){ //costruisce l'array dalla stringa JSON
     JSON.parse(x).forEach((item: any) => { //parsing per avere l'array
       const libro = new Volume(item.autore, item.titolo, item.posizione, item.nominativo);
       this.Inventario.push(libro);
     });
   }
-
-  public sendData(archivio: Array<Volume>) { //invia al database esterno l'array dell'inventario
+*/
+  public sendData(y: string) { //invia al database esterno l'array dell'inventario
     const obs = ajax({
       method: 'POST',
       url: this.base + '/set?key=' + this.key,
       crossDomain: true,
-      body: JSON.stringify(archivio)
+      body: y
     })
     obs.subscribe({
       next: (res: AjaxResponse<any>) => {},
@@ -46,7 +46,7 @@ export class ArchivioService {
       }
     });
   }
-
+/*
   public aggiungiLibro(autore: string, titolo: string, posizione: string, nominativo: string) { //cattura input e aggiunge all'array esistente + richiama sendData()
     let libro: Volume = new Volume(autore, titolo, posizione, nominativo);
     this.Inventario.push(libro);
@@ -59,5 +59,5 @@ export class ArchivioService {
       this.Inventario.splice(index, 1);
       this.sendData(this.Inventario);
     }
-  }
+  }*/
 }

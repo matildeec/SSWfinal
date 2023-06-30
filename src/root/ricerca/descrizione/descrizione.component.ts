@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Volume } from '../../volume';
 import { ArchivioService } from '../../archivio.service';
+import { Archivio } from '../../archivio';
 
 @Component({
   selector: 'descrizione',
@@ -13,12 +14,12 @@ import { ArchivioService } from '../../archivio.service';
 export class DescrizioneComponent {
   @Input() indiceVolume: any = null;
   @Input() volumeTrovato: Volume = new Volume('', '', '', '');
-
+  @Input() archivio: Archivio = new Archivio([]);
   @Input() selezione: boolean = true;
   @Input() defaultSelection: boolean = true;
   @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
   
-  constructor(private archivio: ArchivioService) { }
+  constructor(private as: ArchivioService) { }
 
   Clean(): void {
     this.selezione = false;
@@ -28,19 +29,19 @@ export class DescrizioneComponent {
 
   Rimuovi(): void {
     this.archivio.rimuoviLibro(this.volumeTrovato.autore, this.volumeTrovato.titolo, this.volumeTrovato.posizione);
+    this.as.sendData(JSON.stringify(this.archivio.inventario));
     this.Clean();
   }
 
   Presta(nome: string): void {
-    this.archivio.Inventario[this.indiceVolume].nominativo = nome;
-    this.archivio.sendData(this.archivio.Inventario);
+    this.archivio.inventario[this.indiceVolume].nominativo = nome;
+    this.as.sendData(JSON.stringify(this.archivio.inventario));
     this.Clean();
   }
 
   Restituisci(): void {
-    this.archivio.Inventario[this.indiceVolume].nominativo = '';
-    this.archivio.sendData(this.archivio.Inventario);
+    this.archivio.inventario[this.indiceVolume].nominativo = '';
+    this.as.sendData(JSON.stringify(this.archivio.inventario));
     this.Clean();
   }
-
 }

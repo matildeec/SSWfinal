@@ -6,7 +6,6 @@
 <ng-template *ngIf="volumeTrovato.nominativo === ''; then bloccoIf else bloccoElse"></ng-template>
 
 <ng-template #bloccoIf>
-  <!-- Contenuto del template da visualizzare se il nominativo è una stringa vuota -->
   <h3>Prestito</h3>
   <label>Nominativo:</label><input type="text" placeholder="Inserisci il nominativo" #nome (keyup.enter)="Presta(nome.value)"/><br>
   <h3>Rimozione</h3>

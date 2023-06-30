@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Archivio } from '../archivio';
 import { ArchivioService } from '../archivio.service';
 import { Volume } from '../volume';
 import { DescrizioneComponent } from './descrizione/descrizione.component';
@@ -14,7 +15,7 @@ import { DescrizioneComponent } from './descrizione/descrizione.component';
 export class RicercaComponent {
   @Input() selezione: boolean = true;
   @Input() clean: boolean = false;
-  @Input() inventario: Array<Volume> = [];
+  @Input() archivio: Archivio = new Archivio([]);
   @Output() cambioSelezione: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   bloccoRicerca: boolean = true;
@@ -23,25 +24,21 @@ export class RicercaComponent {
 
   volumeTrovato: Volume = new Volume('', '', '', '');
 
-  constructor(private archivio: ArchivioService) { }
+  constructor(private as: ArchivioService) { }
 
   SearchOnInput(event: any): void{
     let input = (event.target as HTMLInputElement).value;
-    let regex = new RegExp(input, "gi");
-    const risultatiRicerca = this.inventario.filter((libro) => ricerca(libro, regex));
-    
-    function ricerca(libro: Volume, regex: RegExp): boolean {
-      const stringaRicerca: string = libro.titolo.concat(" ", libro.autore, " ", libro.posizione).toLowerCase();
-      return regex.test(stringaRicerca);
-    }
+    let regex = new RegExp(input, "i");
+    const risultatiRicerca = this.archivio.trovaLibri(regex)
     
     if (input === '') {
       this.output = 0;
     } else if (risultatiRicerca.length===1) {
       this.volumeTrovato = risultatiRicerca[0];
-      this.indiceVolume = this.inventario.indexOf(this.volumeTrovato);
+      this.indiceVolume = this.archivio.inventario.indexOf(this.volumeTrovato);
       this.bloccoRicerca = false;
     } else {
+      console.log(risultatiRicerca)
       this.output = risultatiRicerca.length;
     }
   }

@@ -4,7 +4,8 @@
   <button (click)="Attiva('inserimento')">Inserimento</button>
 </div>
 
-<inserimento 
+<inserimento
+[archivio] = 'archivio' 
 [selezione]='inserimentoSelected' 
 (cambioSelezione)="HandleCambioSelezione()">
 </inserimento>
@@ -13,5 +14,5 @@
 [selezione]='ricercaSelected'
 [clean]='clean' 
 (cambioSelezione)="HandleCambioSelezione()" 
-[inventario]='Inventario'>
+[archivio] = 'archivio'>
 </ricerca>

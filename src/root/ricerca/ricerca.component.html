@@ -10,6 +10,7 @@
 
   <ng-template #bloccoElse>
     <descrizione 
+    [archivio]='archivio'
     [selezione]='selezione'
     (cambioSelezione)='HandleCambioSelezione()'
     [volumeTrovato]='volumeTrovato' 
