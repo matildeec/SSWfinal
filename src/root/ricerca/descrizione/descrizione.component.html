@@ -1,13 +1,13 @@
 <h2>Descrizione del documento</h2>
 <div>{{volumeTrovato.posizione}}</div>
-<div>Autore: {{volumeTrovato.autore}}</div>
-<div>Titolo: {{volumeTrovato.titolo}}</div>
+<div><label>Autore:</label>{{volumeTrovato.autore}}</div>
+<div><label>Titolo:</label>{{volumeTrovato.titolo}}</div>
 
 <ng-template *ngIf="volumeTrovato.nominativo === ''; then bloccoIf else bloccoElse"></ng-template>
 <ng-template #bloccoIf>
   <!-- Contenuto del template da visualizzare se il nominativo è una stringa vuota -->
   <h3>Prestito</h3>
-  <label>Nominativo: </label> <input type="text" placeholder="Inserisci il nominativo" #nome (keyup.enter)="Presta(nome.value)"/><br>
+  <label>Nominativo:</label><input type="text" placeholder="Inserisci il nominativo" #nome (keyup.enter)="Presta(nome.value)"/><br>
   <h3>Rimozione</h3>
   <button (click)='Rimuovi()'>Rimuovi</button>
 </ng-template>

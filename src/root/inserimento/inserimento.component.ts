@@ -18,15 +18,22 @@ export class InserimentoComponent {
   constructor(private archivio: ArchivioService) { }
 
   Clean(): void {
+    this.notifica = '';
     this.selezione = false;
     this.cambioSelezione.emit(this.selezione);
   }
 
   Inserisci(autore: string, titolo: string, posizione: string): void {
+    if (autore.trim() === '' || titolo.trim() === '' || posizione.trim() === '') {
+      this.notifica = 'I campi non possono essere vuoti';
+      return;
+    }
+
     if (this.archivio.Inventario.some(item => item.posizione === posizione.toUpperCase())) { //verifica se la posizione è già presente nell'inventario
       this.notifica = 'Posizione già occupata';
       return;
     }
+    
     this.archivio.aggiungiLibro(autore, titolo, posizione.toUpperCase(), '');
     this.Clean();
   }
